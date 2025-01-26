@@ -1,5 +1,7 @@
 # RAG FARMING AGENT
 
+Ever wondered, "what is the most recent temperature in the Coastal Greenhouse published by the sensor at any given time?" Well, now we can know!
+
 Note: I'm developing the following agent for the recent Ottomator hackathon. I'll update everyone on the results very soon!
 
 Introduction:
