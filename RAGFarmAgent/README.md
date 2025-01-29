@@ -44,11 +44,7 @@ See: ______
 
 ## Using the Agent! A Written Demo.
 The following is just a small subset of what you could ask, but my goal is to showcase each of the distinct capabilities here that a grower would find useful for their operation.
-<span style="color:green;">Green Text</span>
-<span style="color:red;">Red Text</span>
-<span style="color:cyan;">Cyan Text</span>
-<span style="color:magenta;">Magenta Text</span>
-<span style="color:yellow;">Yellow Text</span>
+
 
 ### 1. 🟩 Visualize Incoming Data from the Greenhouses! (Chart Agent Functionality)
 
