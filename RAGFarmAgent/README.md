@@ -43,15 +43,15 @@ The Coastal greenhouse is aimed to emulate the environmental conditions of appro
 ## Using the Agent! A Demo.
 The following is just a small subset of what you could ask, but my goal is to showcase each of the distinct capabilities here that a grower would find useful for their operation.
 
-Visualize Incoming Data from the Greenhouses! (Chart Agent Functionality)
+### Visualize Incoming Data from the Greenhouses! (Chart Agent Functionality)
 
-Set Tresholds that Trigger Alerts when out of bounds! (Discord / Flask Integration)!
+### Set Tresholds that Trigger Alerts when out of bounds! (Discord / Flask Integration)!
 
-View Real Greenhouse Image Data! (Custom Camera Endpoint Integration)
+### View Real Greenhouse Image Data! (Custom Camera Endpoint Integration)
 
-Live Document Integration: Ask Questions about the Greenhouse Documentation and get Updates! (Document Parsing, Semantic Search)
+### Live Document Integration: Ask Questions about the Greenhouse Documentation and get Updates! (Document Parsing, Semantic Search)
 
-Analyze Data and Look for Trends (Context Based Querying and Filtering)
+### Analyze Data and Look for Trends (Context Based Querying and Filtering)
 
 
 
