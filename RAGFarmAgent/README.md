@@ -1,6 +1,6 @@
 # INDOOR SMART FARMING AGENT
 
-I'm developing the following agent for the recent Ottomator hackathon.
+I've developed the following agent through n8n for the recent Ottomator hackathon.
 
 ## Introduction:
 For this Hackathon, my goal is to demo a robust Farming RAG agent that acts as a smart assistant for your indoor farm, greenhouse, or any other growing asset.
