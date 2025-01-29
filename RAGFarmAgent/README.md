@@ -39,8 +39,10 @@ The Tropical Greenhouse is aimed to emulate the environmental conditions of appr
 
 The Coastal greenhouse is aimed to emulate the environmental conditions of approximately the coastal plains of Perth, Australia. This climate is known to have dry summers with little rainfall, and cooler wetter winters. Currently, the climate is a bit cold and wet, and flora that grow on these plains tend to emerge from their tubers to begin their active growing season with the harsh summers behind them. A well known species from this region is the Drosera Aberrans, a tuberous insectivorous plant with dark jade colored leaves arranged in a rosette. This plant often has a distinct sweet fragrance.
 
+## Using the Agent! A Video Demo.
+See: ______
 
-## Using the Agent! A Demo.
+## Using the Agent! A Written Demo.
 The following is just a small subset of what you could ask, but my goal is to showcase each of the distinct capabilities here that a grower would find useful for their operation.
 <span style="color:green;">Green Text</span>
 <span style="color:red;">Red Text</span>
@@ -48,15 +50,15 @@ The following is just a small subset of what you could ask, but my goal is to sh
 <span style="color:magenta;">Magenta Text</span>
 <span style="color:yellow;">Yellow Text</span>
 
-### 1. <span style="color:green;">Visualize Incoming Data from the Greenhouses! (Chart Agent Functionality)</span>
+### 1. 🟩 Visualize Incoming Data from the Greenhouses! (Chart Agent Functionality)
 
-### 2. Set Tresholds that Trigger Alerts when out of bounds! (Discord / Flask Integration)!
+### 2. 🟥 Set Tresholds that Trigger Alerts when out of bounds! (Discord / Flask Integration)!
 
-### 3. View Real Greenhouse Image Data! (Custom Camera Endpoint Integration)
+### 3. 🟦 View Real Greenhouse Image Data! (Custom Camera Endpoint Integration)
 
-### 4. Live Document Integration: Ask Questions about the Greenhouse Documentation and get Updates! (Document Parsing, Semantic Search)
+### 4. 🟨 Live Document Integration: Ask Questions about the Greenhouse Documentation and get Updates! (Document Parsing, Semantic Search)
 
-### 5. Analyze Data and Look for Trends (Context Based Querying and Filtering)
+### 5. 🟪 Analyze Data and Look for Trends (Context Based Querying and Filtering)
 
 
 
