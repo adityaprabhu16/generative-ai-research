@@ -7,15 +7,18 @@ For this Hackathon, my goal is to demo a robust Farming RAG agent that acts as a
 
 My aim here is to showcase the utility of agents in IoT applications, where data can change hourly and needs active monitoring to ensure the optimal conditions and the best health for the specific plants you are growing.
 
-The agent I designed helps you visualize data from live greenhouse sensors, monitor changes to your greenhouse parameters, and even adjust growing controls, from anywhere in the world! 
-The agent has access to live greenhouse document that I have updated with more detailed information about the greenhouses and plants I'm growing, allowing you to ask questions about the greenhouses being monitored and query for any updated notices. A document lke this is often useful for when multiple growers may be managing the operation and need to refer to a shared documentation.
-
 To showcase the utility of this agent, I set up two off the shelf wireless sensors that report hourly data from two grow spaces that I manage: the Coastal Greenhouse and the Tropical Greenhouse. In addition to these two sensors, I've setup a small overhead IoT camera which the agent is able to return remote images from when asked, giving you a sneak peek at what the plants and greenhouse look like, without actually being there!
 
 | Tropical Greenhouse | Coastal Greenhouse |
 |---------------------|---------------------|
 | ![Tropical Greenhouse](images/TropicalGreenhouse.JPG) | ![Coastal Greenhouse](images/CoastalGreenhouse.JPG) |
 
+The agent I designed helps you...
+ - ...visualize data from live greenhouse sensors,
+ - ...monitor changes to your greenhouse parameters,
+ - ...adjust growing controls, from anywhere in the world!
+ - ...learn more about the greenhouses and updated documentation
+ - ...and more!
 
 As the name suggests, the two greenhouses are meant to emulate slightly different climates in two distinct geographies, though in the winter the conditions happen to overlap slightly. Note the difference in both the soil type and general flora from the overhead view of the greenhouses above!
 
