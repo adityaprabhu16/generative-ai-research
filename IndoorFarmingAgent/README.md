@@ -16,6 +16,7 @@ To showcase the utility of this agent, I set up two off the shelf wireless senso
 
 
 In addition to these two sensors, I've setup a small overhead IoT camera which the agent is able to return remote images from when asked, giving you a sneak peek at what the plants and greenhouse look like, without actually being there!
+ ![IoT Camera](images/RemoteCamera.JPG)
 
 The agent I designed helps you...
  - ...visualize data from live greenhouse sensors,
