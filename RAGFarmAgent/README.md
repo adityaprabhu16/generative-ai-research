@@ -1,7 +1,8 @@
 # INDOOR SMART FARMING AGENT
 
 I'm developing the following agent for the recent Ottomator hackathon.
-Introduction:
+
+## Introduction:
 For this Hackathon, my goal is to demo a robust Farming RAG agent that acts as a smart assistant for your indoor farm, greenhouse, or any other growing asset.
 
 My aim here is to showcase the utility of agents in IoT applications, where data can change hourly and needs active monitoring to ensure the optimal conditions and the best health for the specific plants you are growing.
@@ -20,19 +21,19 @@ As the name suggests, the two greenhouses are meant to emulate slightly differen
 
 These IoT integration possibilities are endless, but for the scope of this Hackathon I'm focusing on environmental (humidity, temperature, air pressure, sensor battery) and visual (JPG image updates from camera)
 
-Greenhouses:
+## Greenhouses:
 Here’s some more information about the sensors in each greenhouse that the indoor farming agent will help monitor.
 
-Tropical Greenhouse:
+### Tropical Greenhouse:
 
 The Tropical Greenhouse is aimed to emulate the environmental conditions of approximately the Kibara Plateau, DRC. This climate is known to be highland tropical, with seasonal variations in rainfall and temperature. Currently, this climate will be a bit cold and dry, and flora that grow on this plateau will often go into an obligate dormancy. A well known species from this region, also critically endangered, is the Drosera Katangensis, a unique stem-forming insectivorous plant with light cream-colored dewy leaves.
 
-Coastal Greenhouse
+### Coastal Greenhouse
 
 The Coastal greenhouse is aimed to emulate the environmental conditions of approximately the coastal plains of Perth, Australia. This climate is known to have dry summers with little rainfall, and cooler wetter winters. Currently, the climate is a bit cold and wet, and flora that grow on these plains tend to emerge from their tubers to begin their active growing season with the harsh summers behind them. A well known species from this region is the Drosera Aberrans, a tuberous insectivorous plant with dark jade colored leaves arranged in a rosette. This plant often has a distinct sweet fragrance.
 
 
-Using the Agent!
+## Using the Agent! A Demo.
 The following is just a small subset of what you could ask, but my goal is to showcase each of the distinct capabilities here that a grower would find useful for their operation.
 
 Visualize Incoming Data from the Greenhouses! (Chart Agent Functionality)
