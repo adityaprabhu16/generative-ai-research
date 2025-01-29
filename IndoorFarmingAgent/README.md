@@ -78,3 +78,9 @@ Things you can ask the agent:
 - It's winter time, so let's update the high temperature trigger to 25 degrees Celsius 
 - - You can choose from temperature, humidity, (low, high or both), for both greenhouses (Coastal, Tropical)!
 And so on!
+
+
+Final Notes:
+
+Charting and generating visuals is the most intensive query for the agent to process because I've had to fine-tine (through trial and error) the DB filtering prompts and output parser to prevent the agent from producing fake, malformed, and even nonexistent data! It can take around 40s-48s depending on how much you asked it to plot, but the meaningful visual at the end is worth it.
+All other queries get satisfied within several seconds.
