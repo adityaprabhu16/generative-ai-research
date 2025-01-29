@@ -1,8 +1,8 @@
-# RAG FARMING AGENT
+# INDOOR SMART FARMING AGENT
 
 Ever wondered, "what is the most recent temperature in the Coastal Greenhouse published by the sensor at any given time?" Well, now we can know!
 
-Note: I'm developing the following agent for the recent Ottomator hackathon. I'll update everyone on the results very soon!
+I'm developing the following agent for the recent Ottomator hackathon. I'll update everyone on the results very soon!
 
 Introduction:
 For this Hackathon, my goal is to demo a robust Farming RAG agent that acts as a smart assistant for your indoor farm, greenhouse, or any other growing asset.
