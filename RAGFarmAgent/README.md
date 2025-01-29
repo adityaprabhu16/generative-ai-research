@@ -48,7 +48,7 @@ The following is just a small subset of what you could ask, but my goal is to sh
 
 ### 1. 🟩 Visualize Incoming Data from the Greenhouses! (Chart Agent Functionality)
 
-### 2. 🟥 Set Tresholds that Trigger Alerts when out of bounds! (Discord / Flask Integration)!
+### 2. 🟥 Set Thresholds that Trigger Alerts when out of bounds! (Discord / Flask Integration)!
 
 ### 3. 🟦 View Real Greenhouse Image Data! (Custom Camera Endpoint Integration)
 
