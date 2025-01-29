@@ -6,13 +6,14 @@ I've developed the following agent through n8n for the recent Ottomator hackatho
 For this Hackathon, my goal is to demo a robust Farming RAG agent that acts as a smart assistant for your indoor farm, greenhouse, or any other growing asset.
 
 My aim here is to showcase the utility of agents in IoT applications, where data can change hourly and needs active monitoring to ensure the optimal conditions and the best health for the specific plants you are growing.
-<br>
+
+
 To showcase the utility of this agent, I set up two off the shelf wireless sensors that report hourly data from two grow spaces that I manage: the Coastal Greenhouse and the Tropical Greenhouse.
 
 | Tropical Greenhouse | Coastal Greenhouse |
 |---------------------|---------------------|
 | ![Tropical Greenhouse](images/TropicalGreenhouse.JPG) | ![Coastal Greenhouse](images/CoastalGreenhouse.JPG) |
-<br>
+
 
 In addition to these two sensors, I've setup a small overhead IoT camera which the agent is able to return remote images from when asked, giving you a sneak peek at what the plants and greenhouse look like, without actually being there!
 
