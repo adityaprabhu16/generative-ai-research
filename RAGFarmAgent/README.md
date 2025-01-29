@@ -1,7 +1,5 @@
 # INDOOR SMART FARMING AGENT
 
-Ever wondered, "what is the most recent temperature in the Coastal Greenhouse published by the sensor at any given time?" Well, now we can know!
-
 I'm developing the following agent for the recent Ottomator hackathon. I'll update everyone on the results very soon!
 
 Introduction:
@@ -19,8 +17,8 @@ These IoT integration possibilities are endless, but for the scope of this Hacka
 As the name suggests, the two greenhouses are meant to emulate slightly different climates in two distinct geographies, though in the winter the conditions happen to overlap slightly. Note the difference in both the soil type and general flora from the overhead view of the greenhouses below!
 
 <p align="center">
-  <img src="images/TropicalGreenhouse" alt="Tropical Greenhouse" width="45%">
-  <img src="images/CoastalGreenhouse" alt="Coastal Greenhouse" width="45%">
+  <img src="./images/TropicalGreenhouse" alt="Tropical Greenhouse" width="45%">
+  <img src="./images/CoastalGreenhouse" alt="Coastal Greenhouse" width="45%">
 </p>
 
 Greenhouses:
