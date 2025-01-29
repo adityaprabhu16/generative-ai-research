@@ -1,7 +1,6 @@
 # INDOOR SMART FARMING AGENT
 
-I'm developing the following agent for the recent Ottomator hackathon. I'll update everyone on the results very soon!
-
+I'm developing the following agent for the recent Ottomator hackathon.
 Introduction:
 For this Hackathon, my goal is to demo a robust Farming RAG agent that acts as a smart assistant for your indoor farm, greenhouse, or any other growing asset.
 
@@ -12,14 +11,14 @@ The agent has access to live greenhouse document that I have updated with more d
 
 To showcase the utility of this agent, I set up two off the shelf wireless sensors that report hourly data from two grow spaces that I manage: the Coastal Greenhouse and the Tropical Greenhouse. In addition to these two sensors, I've setup a small overhead IoT camera which the agent is able to return remote images from when asked, giving you a sneak peek at what the plants and greenhouse look like, without actually being there!
 
-These IoT integration possibilities are endless, but for the scope of this Hackathon I'm focusing on environmental (humidity, temperature, air pressure, sensor battery) and visual (JPG image updates from camera)
-
-As the name suggests, the two greenhouses are meant to emulate slightly different climates in two distinct geographies, though in the winter the conditions happen to overlap slightly. Note the difference in both the soil type and general flora from the overhead view of the greenhouses below!
-
 <p align="center">
   <img src="images/TropicalGreenhouse.JPG" alt="Tropical Greenhouse" width="45%">
   <img src="images/CoastalGreenhouse.JPG" alt="Coastal Greenhouse" width="45%">
 </p>
+
+As the name suggests, the two greenhouses are meant to emulate slightly different climates in two distinct geographies, though in the winter the conditions happen to overlap slightly. Note the difference in both the soil type and general flora from the overhead view of the greenhouses above!
+
+These IoT integration possibilities are endless, but for the scope of this Hackathon I'm focusing on environmental (humidity, temperature, air pressure, sensor battery) and visual (JPG image updates from camera)
 
 Greenhouses:
 Here’s some more information about the sensors in each greenhouse that the indoor farming agent will help monitor.
