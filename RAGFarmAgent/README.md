@@ -47,23 +47,34 @@ The following is just a small subset of what you could ask, but my goal is to sh
 
 
 ### 1. 🟩 Visualize Incoming Data from the Greenhouses! (Chart Agent Functionality)
+![Demo1](images/Demo1.png)
 
 ### 2. 🟥 Set Thresholds that Trigger Alerts when out of bounds! (Discord / Flask Integration)!
+![Demo2a](images/Demo2a.png)
+| Phone Notification View | Discord Alert View |
+|---------------------|---------------------|
+| ![Demo2b](images/Demo2b.png) | ![Demo2c](images/Demo2c.png) |
+
+I made the Discord publically available. You can actually join the Discord at 
 
 ### 3. 🟦 View Real Greenhouse Image Data! (Custom Camera Endpoint Integration)
+![Demo1](images/Demo3.png)
 
 ### 4. 🟨 Live Document Integration: Ask Questions about the Greenhouse Documentation and get Updates! (Document Parsing, Semantic Search)
+![Demo1](images/Demo4a.png)
+![Demo1](images/Demo4b.png)
 
 ### 5. 🟪 Analyze Data and Look for Trends (Context Based Querying and Filtering)
+![Demo1](images/Demo5a.png)
+![Demo1](images/Demo5b.png)
 
 
-
-
-
-Things you can ask the RAG Agent:
-For some ideas to ask the RAG agent that a grower like me would be interested in, try the following:
-What is the current temperature and humidity of the tropical greenhouse?
-What is the average temperature of the Coastal greenhouse?
-What is the most recent update from the Coastal greenhouse?
-
+Things you can ask the agent:
+- For some ideas to ask the agent that a grower like me would be interested in, try the following:
+- What is the current temperature and humidity of the tropical greenhouse?
+- When did we last hear from our tropical greenhouse?
+- Help me visualize.... (you can visualize temp, humidity, battery, air pressure!)
+- Let's see what .... looks like currently, send me the latest snapshot! (only Coastal Greenhouse has image data available)
+- It's winter time, so let's update the high temperature trigger to 25 degrees Celsius 
+- - You can choose from temperature, humidity, (low, high or both), for both greenhouses (Coastal, Tropical)!
 And so on!
