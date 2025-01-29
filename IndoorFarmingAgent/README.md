@@ -40,7 +40,7 @@ The Tropical Greenhouse is aimed to emulate the environmental conditions of appr
 The Coastal greenhouse is aimed to emulate the environmental conditions of approximately the coastal plains of Perth, Australia. This climate is known to have dry summers with little rainfall, and cooler wetter winters. Currently, the climate is a bit cold and wet, and flora that grow on these plains tend to emerge from their tubers to begin their active growing season with the harsh summers behind them. A well known species from this region is the Drosera Aberrans, a tuberous insectivorous plant with dark jade colored leaves arranged in a rosette. This plant often has a distinct sweet fragrance.
 
 ## Using the Agent! A Video Demo.
-See: ______
+To be added.
 
 ## Using the Agent! A Written Demo.
 The following is just a small subset of what you could ask, but my goal is to showcase each of the distinct capabilities here that a grower would find useful for their operation.
