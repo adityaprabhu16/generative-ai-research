@@ -53,9 +53,9 @@ The following is just a small subset of what you could ask, but my goal is to sh
 ![Demo2a](images/Demo2a.png)
 | Phone Notification View | Discord Alert View |
 |---------------------|---------------------|
-| ![Demo2b](images/Demo2b.png) | ![Demo2c](images/Demo2c.png) |
+| ![Demo2b](images/Demo2b.jpg) | ![Demo2c](images/Demo2c.jpg) |
 
-I made the Discord publically available. You can actually join the Discord at 
+I made the Discord publically available. You can actually join the Discord at https://discord.gg/wVcxdFPf28 - it should be available for up to 100 invitations.
 
 ### 3. 🟦 View Real Greenhouse Image Data! (Custom Camera Endpoint Integration)
 ![Demo1](images/Demo3.png)
