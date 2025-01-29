@@ -11,7 +11,7 @@ The agent has access to live greenhouse document that I have updated with more d
 
 To showcase the utility of this agent, I set up two off the shelf wireless sensors that report hourly data from two grow spaces that I manage: the Coastal Greenhouse and the Tropical Greenhouse. In addition to these two sensors, I've setup a small overhead IoT camera which the agent is able to return remote images from when asked, giving you a sneak peek at what the plants and greenhouse look like, without actually being there!
 
-<div style="display: flex; justify-content: center; gap: 20px;">
+<div align="center" style="display: flex; justify-content: center; gap: 20px;">
   <div style="text-align: center;">
     <p>Tropical Greenhouse</p>
     <img src="images/TropicalGreenhouse.JPG" alt="Tropical Greenhouse" width="45%">
