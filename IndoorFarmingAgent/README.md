@@ -2,6 +2,9 @@
 
 I've developed the following agent through n8n for the recent Ottomator hackathon.
 
+A video demo of a couple of the unique features this agent can perform: 
+
+
 ## Introduction:
 For this Hackathon, my goal is to demo a robust Farming RAG agent that acts as a smart assistant for your indoor farm, greenhouse, or any other growing asset.
 
