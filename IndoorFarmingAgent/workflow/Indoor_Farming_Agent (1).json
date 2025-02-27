@@ -1,0 +1,953 @@
+{
+  "name": "Indoor Farming Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"success\": true,\n  \"response\": {{ JSON.stringify($('Add AI Message to DB').item.json.message.content) }}\n}\n",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "X-n8n-Signature",
+                "value": "EvtIS^EBVISeie6svB@6ev"
+              }
+            ]
+          }
+        }
+      },
+      "id": "f44ca108-9c30-4f58-b48b-20cf150ca7c8",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3060,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "id": "a4a8a78d-a970-4a44-919f-686c5cc8ac84",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -340,
+        -160
+      ],
+      "webhookId": "15e4d662-3f98-48d0-9f50-68838769ecac"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "invoke-test-agent",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "c576c0ae-0d25-4b12-b7ab-2eb24dc111f1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -860,
+        200
+      ],
+      "webhookId": "9ba11544-5c4e-4f91-818a-08a4ecb596c5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9a9a245e-f1a1-4282-bb02-a81ffe629f0f",
+              "name": "query",
+              "value": "={{ {\n\"type\": \"human\",\n\"content\": $json.body.query,\n} }}",
+              "type": "string"
+            },
+            {
+              "id": "b80831d8-c653-4203-8706-adedfdb98f77",
+              "name": "user_id",
+              "value": "={{ $json.body.user_id }}",
+              "type": "string"
+            },
+            {
+              "id": "ea6f016e-2904-4701-8d8d-acabc83c705a",
+              "name": "request_id",
+              "value": "={{ $json.body.request_id }}",
+              "type": "string"
+            },
+            {
+              "id": "aca1a7d0-4b20-4b45-abb5-2c2d16c7e5f6",
+              "name": "session_id",
+              "value": "={{ $json.body.session_id }}",
+              "type": "string"
+            },
+            {
+              "id": "2cf80117-f62c-4848-a145-ad47a67a02ca",
+              "name": "data_query",
+              "value": "={{ $json.body.data_query }}",
+              "type": "string"
+            },
+            {
+              "id": "7ea2c436-d2e1-49f2-8143-bf78a92eb894",
+              "name": "user_query",
+              "value": "={{ $json.body.query }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "549d9e6e-27c3-4e17-9846-e5f6282ade4a",
+      "name": "Prep Input Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -560,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "tableId": "messages",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "session_id",
+              "fieldValue": "={{ $json.session_id }}"
+            },
+            {
+              "fieldId": "message",
+              "fieldValue": "={{ $json.query }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        200
+      ],
+      "id": "54ec21bc-32c3-442a-8465-d3fd10a03d98",
+      "name": "Add User Message to DB",
+      "credentials": {
+        "supabaseApi": {
+          "id": "z6lez5x4pyxomqOq",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "messages",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "session_id",
+              "fieldValue": "={{ $('Prep Input Fields').item.json.session_id }}"
+            },
+            {
+              "fieldId": "message",
+              "fieldValue": "={{ {\n\"type\": \"ai\",\n\"content\": $json.output,\n\"data\": $json.data,\n\"additional_kwargs\": {},\n\"response_metadata\": {}\n} }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        -180
+      ],
+      "id": "065558e9-d104-4ba6-a2ac-a9d2be8868ae",
+      "name": "Add AI Message to DB",
+      "credentials": {
+        "supabaseApi": {
+          "id": "z6lez5x4pyxomqOq",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b9b7b266-3a46-4f72-96b7-90fce238f280",
+              "name": "success",
+              "value": "=true",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2800,
+        -180
+      ],
+      "id": "c6d02cd3-851e-45cb-bca3-3f78fb158511",
+      "name": "Prep Output Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0a61ce99-17b5-45a9-b258-3f0291f11ba1",
+              "name": "chatInput",
+              "value": "={{ $json?.chatInput || $json.body.chatInput }}",
+              "type": "string"
+            },
+            {
+              "id": "db780496-3d7a-4049-9c0d-9fb99a9a87df",
+              "name": "sessionId",
+              "value": "={{ $json?.sessionId || $json.body.sessionId }}",
+              "type": "string"
+            },
+            {
+              "id": "8df34e4d-3300-4d59-b4ed-15d3ae536408",
+              "name": "table_id",
+              "value": "mxsnhwi35jz0zca",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -60,
+        80
+      ],
+      "id": "392075a4-3589-47b9-b9c6-b39107d4d4d5",
+      "name": "Settings"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Call this tool when you need to query data greenhouse spreadsheet table and answer the user's questions. \n\nFor example, the full NocoDB query for the tag C4:DE:E2:B9:E8:44:EE:EE for the 300 most recent datapoints would be:https://app.nocodb.com/api/v2/tables/mxsnhwi35jz0zca/records?sort=-timestamp&where=(tag,eq,C4DEE2B9E844EEEE)&limit=300",
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "workspaceId": "w33yjbmy",
+        "projectId": "pa8jntwkscv3cqu",
+        "table": "={{ $('Settings').item.json.table_id }}",
+        "returnAll": true,
+        "options": {
+          "fields": [],
+          "sort": {
+            "property": [
+              {
+                "field": "timestamp",
+                "direction": "desc"
+              }
+            ]
+          },
+          "where": "={{ $fromAI('filter_formula', 'Generate a filter formula to query relevant data for NocoDB. Format: (Column, operator, value). For example, (Ticker,eq,IMMR) will filter for Ticker column equal to IMMR. The operators are eq (equals), neq (not equal), gt (greater than), lt (less than), gte (greater than or equal), lte (less than or equal), like (contains). Ensure that for the `tag` column, colons (`:`) are removed before inserting into the query and the value **is not** enclosed in quotes. Example: (tag, eq, C4DEE2B9E844EEEE). Use an ISO 8601 timestamp (YYYY-MM-DDTHH:MM:SS.sssZ) for datetime values. For dynamic date calculations, assume \"now\" refers to the current UTC time. For example, to filter the last 7 days, calculate the timestamp as \"now - 7 days\" and format it as: (timestamp,gt,2024-10-07T23:59:59.999Z) where \"2024-10-07T23:59:59.999Z\" is exactly 7 days before the current date. If combining conditions, use ~and~or for logical operations. Example: (timestamp,gt,2024-10-01T00:00:00.000Z)~and(timestamp,lt,2024-10-07T23:59:59.999Z).') }}\n\n\n"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDbTool",
+      "typeVersion": 3,
+      "position": [
+        1440,
+        -300
+      ],
+      "id": "069d6713-2887-49a6-9c12-c5cf49c188bc",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "o0KPRaleEERVsT14",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0f09fcf1-60ff-467a-9b1f-0fd0ed2c28ab",
+              "name": "columns",
+              "value": "={{ $json.columns.map(item => item.title).toJsonString() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1060,
+        -400
+      ],
+      "id": "dad951fc-0b9b-4eef-9331-3443156f6977",
+      "name": "Extract Columns"
+    },
+    {
+      "parameters": {
+        "url": "=https://app.nocodb.com/api/v2/meta/tables/{{ $json.table_id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "nocoDbApiToken",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        -400
+      ],
+      "id": "c9981a05-3a64-4e62-96f4-c6ac45a3e767",
+      "name": "Extract Table",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "o0KPRaleEERVsT14",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Prep Input Fields').item.json.data_query }}",
+        "options": {
+          "systemMessage": "=You are a helpful Data Analyst assistant who is skilled at working with and querying NocoDB.\n\nPlease keep your responses short and succinct, within 3 sentences maximum.\n\nYour goal is to help the user understand the table that is specified. \n\nHere are the columns for that table. Note that temp corresponds to temperature.\n{{ $json.columns }}\n"
+        }
+      },
+      "id": "dc330bfe-b051-4bca-9ec6-d1ab204bde38",
+      "name": "Data Query Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1280,
+        -620
+      ],
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.full_query }}",
+        "options": {
+          "systemMessage": "=You are a concise and direct plant companion agent that provides short, actionable plant care recommendations based on ideal conditions stored in NocoDB.\n\nHere are the columns for the plant information NocoDB table:\n[\"Id\",\"PlantName\",\"CreatedAt\",\"UpdatedAt\",\"nc_created_by\",\"nc_updated_by\",\"nc_order\",\"Season\",\"TemperatureFahrenheit\",\"HumidityPercentage\",\"PhotoperiodHours\",\"Location\",\"Notes\"]\n\nIf the user's prompt includes something along the lines that they are 'looking for advice', and inquires with a specific plant along with current data, please ensure the responses always follow this format with line breaks, and within quick tips, provide some advice on the specific plant. Use bullet points here for clarity!\n\nOf course, since you're looking for advice, I've taken a look at the data and have made some reccomendations for you!\n\nOverall Status: ⚠️ Your [Plant Name] Needs Attention!\n\nTemperature: ⚠️ Too hot! Your upper range of 23°C exceeds ideal 18°C. \nHumidity: ❌ Too low! Ideal: 60-90%, but your average or median is 50%. \nPhotoperiod: ✅ Perfect! 10-12 hours is great. \nBiggest Fix: 🌡️ Reduce temp spikes above 18°C based on the data.\n\nQuick Tip: 💦 [Plant-Specific Advice and refer to the user data as evidence] \nFinal Encouragement: 👏 Almost there! Keep humidity above 60%. \n\nOtherwise, for all other queries, answer the user's questions conversationally within strictly 4 to 6 sentences by querying NocoDB as needed and providing reccomendations based on the information the user's query provides."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        2060,
+        -560
+      ],
+      "id": "42765100-5710-417f-98f1-5c0af5feb313",
+      "name": "Plant Recommendation Agent"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "workspaceId": "w33yjbmy",
+        "projectId": "pa8jntwkscv3cqu",
+        "table": "mllip2yl6c4yv6b",
+        "options": {
+          "where": "={{ $fromAI('filter_formula', 'Generate a filter formula to query relevant data for NocoDB. Format: (Column, operator, value). For example, (Ticker,eq,IMMR) will filter for Ticker column equal to IMMR. The operators are eq (equals), neq (not equal), gt (greater than), lt (less than), gte (greater than or equal), lte (less than or equal), like (contains). Ensure that for the `PlantName` column you remove the space between any plant names before querying and make sure to capitalize the first letter of the plant names. For example, Drosera Aberrans becomes DroseraAberrans. Similarly, drosera aberrans becomes DroseraAberrans. Compound conditions can be expressed like (PlantName,eq,DroseraAberrans)~and(Season,eq,Winter).') }}"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDbTool",
+      "typeVersion": 3,
+      "position": [
+        2240,
+        -320
+      ],
+      "id": "b95c8c16-4279-46b8-a283-2911b84bfb5c",
+      "name": "NocoDB1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "o0KPRaleEERVsT14",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "abe212aa-dd92-4577-93c9-bae6720e719f",
+              "name": "full_query",
+              "value": "={{ $('Prep Input Fields').item.json.user_query + $json.output.replace(/^[\\s\\S]*?(Humidity:)/, '$1') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1700,
+        -620
+      ],
+      "id": "9793e474-4db8-4318-8383-deffb631e309",
+      "name": "Format Input"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.2,
+      "position": [
+        1280,
+        -300
+      ],
+      "id": "45ac2337-9365-41f7-861b-cf2f34b08a6d",
+      "name": "Anthropic Chat Model",
+      "credentials": {
+        "anthropicApi": {
+          "id": "zGyGEkiL5iSJdkoH",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{$('Prep Input Fields').item.json.user_query}}\n",
+                    "rightValue": "=\\badvice\\b",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9bdcda6b-9b1f-43d7-855f-3f6574caafb0",
+                    "leftValue": "={{$('Prep Input Fields').item.json.user_query}}",
+                    "rightValue": "=/\\b(trends?|insights?|data\\s+analysis)\\b/i",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1ca884d6-f1b1-4844-88d3-5e57ae718782",
+                    "leftValue": "={{$('Prep Input Fields').item.json.user_query}}",
+                    "rightValue": "=^(?!.*\\b(advice|trends?|insights?|data\\s+analysis)\\b).*\n",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notRegex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        340,
+        80
+      ],
+      "id": "9e187e2e-15f4-499e-ab2d-4a8f9d3e8010",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "59e82357-3692-4dca-b8e9-e4b8428183a8",
+              "name": "full_query",
+              "value": "={{ $('Prep Input Fields').item.json.user_query }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1540,
+        620
+      ],
+      "id": "fcf9038c-aeb3-4f1f-8ed4-9a11a4b892b2",
+      "name": "Format Input1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.2,
+      "position": [
+        1220,
+        300
+      ],
+      "id": "4f142b05-dbcd-4c7d-b2de-6e5e37a98e7d",
+      "name": "Anthropic Chat Model1",
+      "credentials": {
+        "anthropicApi": {
+          "id": "zGyGEkiL5iSJdkoH",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Call this tool when you need to query data greenhouse spreadsheet table and answer the user's questions. \n\nFor example, the full NocoDB query for the tag C4:DE:E2:B9:E8:44:EE:EE for the 300 most recent datapoints would be:https://app.nocodb.com/api/v2/tables/mxsnhwi35jz0zca/records?sort=-timestamp&where=(tag,eq,C4DEE2B9E844EEEE)&limit=300",
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "workspaceId": "w33yjbmy",
+        "projectId": "pa8jntwkscv3cqu",
+        "table": "={{ $('Settings').item.json.table_id }}",
+        "returnAll": true,
+        "options": {
+          "fields": [],
+          "sort": {
+            "property": [
+              {
+                "field": "timestamp",
+                "direction": "desc"
+              }
+            ]
+          },
+          "where": "={{ $fromAI('filter_formula', 'Generate a filter formula to query relevant data for NocoDB. Format: (Column, operator, value). For example, (Ticker,eq,IMMR) will filter for Ticker column equal to IMMR. The operators are eq (equals), neq (not equal), gt (greater than), lt (less than), gte (greater than or equal), lte (less than or equal), like (contains). Ensure that for the `tag` column, colons (`:`) are removed before inserting into the query and the value **is not** enclosed in quotes. Example: (tag, eq, C4DEE2B9E844EEEE). Use an ISO 8601 timestamp (YYYY-MM-DDTHH:MM:SS.sssZ) for datetime values. For dynamic date calculations, assume \"now\" refers to the current UTC time. For example, to filter the last 7 days, calculate the timestamp as \"now - 7 days\" and format it as: (timestamp,gt,2024-10-07T23:59:59.999Z) where \"2024-10-07T23:59:59.999Z\" is exactly 7 days before the current date. If combining conditions, use ~and~or for logical operations. Example: (timestamp,gt,2024-10-01T00:00:00.000Z)~and(timestamp,lt,2024-10-07T23:59:59.999Z).') }}\n\n\n"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDbTool",
+      "typeVersion": 3,
+      "position": [
+        1440,
+        300
+      ],
+      "id": "0f2b00a2-75e6-47ed-8bcf-b99e5eea9852",
+      "name": "NocoDB2",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "o0KPRaleEERVsT14",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.full_query }}",
+        "options": {
+          "systemMessage": "=You are a concise and insightful Data Analyst assistant skilled in querying NocoDB. Your task is to analyze the specified sensor tag and time range, providing a short summary (max 3 sentences) with key findings. Include brief statistical insights, such as averages, trends, or anomalies, and cite relevant timestamps or time ranges when needed.\n\n📌 Response Format:\n\n📊 Summary: Provide a quick trend overview (e.g., \"Steady increase in temperature\" or \"Humidity fluctuated significantly\").\n📈 Key Stats: Mention key values like averages, peaks, or sudden changes (e.g., \"Avg: 72°F, Peak: 85°F at 14:30\").\n⚠️ Notable Anomalies: Highlight spikes, drops, or unusual behavior (e.g., \"Sudden temp drop at 03:00 – possible sensor issue?\").\n\nHere are the columns for that table. Note that temp corresponds to temperature.\n{{ $json.columns }}\n"
+        }
+      },
+      "id": "34a8f31f-2c57-41d7-bd63-61724f38167c",
+      "name": "Data Analysis Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        1300,
+        0
+      ],
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "13a158b0-9e3b-444c-90af-2f9a22c74124",
+              "name": "full_query",
+              "value": "={{ $('Prep Input Fields').item.json.user_query +  $('Prep Input Fields').item.json.data_query}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        820,
+        60
+      ],
+      "id": "668399c6-38e1-4c49-8b23-99bd182b69ac",
+      "name": "Format Input2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.2,
+      "position": [
+        2040,
+        -320
+      ],
+      "id": "37e18583-a888-448b-ad70-3239996f7659",
+      "name": "Anthropic Chat Model2",
+      "credentials": {
+        "anthropicApi": {
+          "id": "zGyGEkiL5iSJdkoH",
+          "name": "Anthropic account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.[your n8n url].com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+            "content-length": "192",
+            "accept": "*/*",
+            "accept-encoding": "deflate, gzip",
+            "authorization": "Bearer YOUR BEARER TOKEN",
+            "content-type": "application/json",
+            "x-forwarded-for": "64.227.21.251",
+            "x-forwarded-host": "n8n.[your n8n url].com",
+            "x-forwarded-proto": "https",
+            "x-real-ip": "2601:441:4380:40b0:b4b3:724b:27e1:c4ba"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "query": "I'm growing Drosera Elongata indoors under a 10 hour photoperiod. It's winter right now. Any suggestions for me?",
+            "data_query": "Share summary statistics for humidity and temperature for tag C4:DE:E2:B9:E8:44:EE:EE for the last week. Share number of datapoints used to calculate this.",
+            "user_id": "google-oauth2|116467443974012389959",
+            "request_id": "f98asdyf987yasd0f987asdf8",
+            "session_id": "google-oauth2|116467443974012389959~2~8dfbddbe603d"
+          },
+          "webhookUrl": "https://n8n.[your n8n url].com/webhook-test/invoke-agent",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Prep Input Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prep Input Fields": {
+      "main": [
+        [
+          {
+            "node": "Add User Message to DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add AI Message to DB": {
+      "main": [
+        [
+          {
+            "node": "Prep Output Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prep Output Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Settings": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "ai_tool": [
+        [
+          {
+            "node": "Data Query Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Columns": {
+      "main": [
+        [
+          {
+            "node": "Data Query Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Table": {
+      "main": [
+        [
+          {
+            "node": "Extract Columns",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add User Message to DB": {
+      "main": [
+        [
+          {
+            "node": "Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Query Agent": {
+      "main": [
+        [
+          {
+            "node": "Format Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Plant Recommendation Agent": {
+      "main": [
+        [
+          {
+            "node": "Add AI Message to DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Plant Recommendation Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Input": {
+      "main": [
+        [
+          {
+            "node": "Plant Recommendation Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Data Query Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Extract Table",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format Input2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Format Input1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Input1": {
+      "main": [
+        [
+          {
+            "node": "Plant Recommendation Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Data Analysis Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB2": {
+      "ai_tool": [
+        [
+          {
+            "node": "Data Analysis Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Analysis Agent": {
+      "main": [
+        [
+          {
+            "node": "Add AI Message to DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Input2": {
+      "main": [
+        [
+          {
+            "node": "Data Analysis Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Plant Recommendation Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "bce4c95b-bf85-4b54-a836-8c4dee053ae3",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a80546d97fe97e90a0b9d9784e944ce21ca25e1aa73aaac85b99a42442b93ea0"
+  },
+  "id": "NGBGxnzpnjiSyjo1",
+  "tags": [
+    {
+      "createdAt": "2025-02-17T20:26:03.560Z",
+      "updatedAt": "2025-02-17T20:26:03.560Z",
+      "id": "nNqKH8OaDO4nc2Js",
+      "name": "studio-test"
+    }
+  ]
+}
