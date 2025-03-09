@@ -1,3 +1,3 @@
 # GenerativeAIResearch
 
-A collection of various AI topics, technologies, and libraries I have been exploring to build my skills in AI, Automation, and Computer Vision :)
+A collection of various AI topics, technologies, related to AI Agents, Generative AI, and chatbots, including workflows, hackathons, and projects I've developed.
