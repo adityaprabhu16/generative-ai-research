@@ -1,3 +1,11 @@
+Note! During the hackathon, the goal was the develop an endpoint, which the hackathon would connect to their interface called Agent Studio so other users can try our creations out! After the Hackathon, I went further to integrate the endpoint within my own application. If you wish to see a brief demo of this, you can go directly to my LinkedIn post where I share a demo in the panel! 
+
+https://www.linkedin.com/feed/update/urn:li:activity:7300182843119280128/
+
+Additionally, I may have a more specific YouTube video explanation similar to the one I made on my school account, which you can find my following along with my YouTube channel:
+
+https://www.youtube.com/watch?v=x4zvNvivapk&t=12s
+
 # INDOOR SMART FARMING AGENT
 
 I've developed the following agent through n8n for the recent Ottomator hackathon.
