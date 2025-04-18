@@ -2,7 +2,7 @@ Note! During the hackathon, the goal was the develop an endpoint, which the hack
 
 https://www.linkedin.com/feed/update/urn:li:activity:7300182843119280128/
 
-Additionally, I may have a more specific YouTube video explanation similar to the one I made on my school account, which you can find my following along with my YouTube channel:
+Additionally, I may have a more specific YouTube video explanation similar to the one I made on my school account, which you can find by following along with my YouTube channel:
 
 https://www.youtube.com/watch?v=x4zvNvivapk&t=12s
 
